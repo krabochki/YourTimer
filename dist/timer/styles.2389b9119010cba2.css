@@ -1,0 +1,103 @@
+html {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  font-size: calc(
+    (38px / 1.25) + ((49 / 1.25) - (38 / 1.25)) *
+      ((100vw - 1160px) / (1920 - 1160))
+  );
+  background-color: var(--background-color);
+}
+body {
+  overflow: hidden;
+  background-color: var(--background-color);
+  height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+}
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+html,
+body,
+body div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+@media (max-width: 1160px) {
+  html {
+    font-size: calc(13.5px + (30 - 13.5) * ((100vw - 320px) / (1160 - 320)));
+  }
+}
+@media (min-width: 2000px) {
+  html {
+    font-size: calc(44px + 0.024 * (100vw - 2000px));
+  }
+}
