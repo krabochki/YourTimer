@@ -1,0 +1,85 @@
+<body app-theme app-colorpreset ondragstart="return false;" ondrop="return false;">
+  <img
+    class="settings"
+    alt="settings"
+    [ngStyle]="{'pointer-events':dslsettings?'none':'auto'}"
+    (click)="openSettings(); "
+    [src]="'assets/pictures/icons/' + theme + '_theme/settings.png'"
+  />
+  <img
+  class="compress-expand"
+  alt="compress-expand"
+  (click)="compress_expand()"
+  [src]="'assets/pictures/icons/' + theme + '_theme/'+(fullscreen?'compress':'expand')+'.png'"
+/>
+
+  <div class="blur" (click)="openSettings(); " [@Blur] *ngIf="settings"></div>
+  <img
+    [alt]="preset"
+    [src]="'assets/pictures/animals/' + this.preset.toLowerCase() + '.png'"
+    class="animal nomobile"
+  />
+  <div class="contwrap">
+    <app-settings 
+      [@Settings]
+      [volume]="volume"
+      [language]="language"
+      (newLanguage)="changeLanguage($event)"
+      [presetslist]="presetslist"
+      [duration]="duration"
+      (newDuration)="changeDuration($event)"
+      (newVolume)="changeVolume($event)"
+      *ngIf="settings"
+      [theme]="theme"
+      [song]="song"
+      [preset]="preset"
+      (newTheme)="changeTheme($event)"
+      (newSong)="changeSong($event)"
+      (newPreset)="changePreset($event)"
+      [vibro]="vibro"
+      (newVibro)="changeVibro($event)"
+    >
+    </app-settings>
+
+    <h1 class="lng-title" style="padding-right: 20px"></h1>
+    <form class="info">
+      <label #mydiv for="name" [class]="timerOff ? 'lng-taskforthetimer' : 'lng-currenttask'">
+        
+      </label>
+      <input
+      [class]="timerOff ? 'lng-placeholder-typetask' : 'lng-placeholder-noname'" 
+        autocomplete="off"
+        [(ngModel)]="timerName"
+        #name
+        [disabled]="!timerOff"
+        type="text"
+        class="good"
+        name="name"
+        id="name"
+        (keyup)="timnametype()"
+        (keydown)="timnametype()"
+      
+        maxlength="24"
+        spellcheck="false"
+        [readonly]="!timerOff"
+
+        [ngClass]="{ new_border: timerName != '', activecolor: !timerOff }"
+      />
+    </form>
+    <app-time
+      [volume]="volume"
+      [duration]="duration"
+      [nameofcurrenttimer]="timerName"
+      (newName)="resetName($event)"
+      [vibro]="vibro"
+      [input]="timerOff"
+      [theme]="theme"
+      (newInput)="changeInput($event)"
+      [song]="song"
+      [language]="language"
+    ></app-time>
+  </div>
+<div class="box"></div>
+
+
+</body>

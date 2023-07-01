@@ -1,0 +1,520 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+html,
+body {
+  height: 100vh;
+  max-height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+
+  background-color: var(--background-color);
+
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+  outline: 0;
+}
+
+:root {
+  background-color: var(--background-color);
+  --bg-visibility: 50%;
+  --text-color3: rgba(0, 0, 0, 0.75);
+  --text-color2: rgba(0, 0, 0, 0.5);
+  --opacity: 50%;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --themes: 1rem;
+  --text-color2: rgba(0, 0, 0, 0.5);
+  --image-height: 14.5rem;
+  --h1: 2.1rem;
+  --info: 1rem;
+  --time: 1.83rem;
+  --settings-h1: 1.5rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+
+  height: calc(var(--vh, 1vh) * 100);
+
+  --settings-h2: 1rem;
+  --circle: 13.2rem;
+  --settings-p: calc(0.65rem);
+  --spanchik: 1.4rem;
+  --top: calc(-1 * var(--spanchik) / 2 - var(--border) / 2);
+  --border: 0.7rem;
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-family: "AvenirNextCyr";
+  background-color: var(--background-color);
+  color: rgb(var(--text-color));
+}
+
+.info {
+  font-size: var(--info);
+  margin-bottom: calc(var(--info) * 1.5);
+  line-height: 1;
+}
+.time {
+  font-size: var(--time);
+}
+h1 {
+  font-size: var(--h1);
+  line-height: 1;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--info);
+}
+.info input {
+  width: 100%;
+  overflow: visible;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  display: block;
+  font-size: 1.1rem;
+  border: none;
+  color: rgba(var(--text-color), 0.75);
+  caret-color: rgb(var(--text-color));
+  background: none;
+  border-bottom: 0.1rem solid rgba(var(--text-color), 0.5);
+  font-weight: 700;
+  caret-color: rgba(var(--text-color), 0.75);
+}
+span {
+  font-size: var(--time);
+}
+.info label {
+  display: block;
+  font-weight: 100;
+
+  font-size: 0.8rem;
+  letter-spacing: 1.9px;
+  white-space: nowrap;
+  color: rgba(var(--text-color), 0.5);
+}
+
+.activecolor::placeholder {
+  color: rgba(var(--text-color), 0.75) !important;
+}
+
+@media (min-width: 2000px) {
+  .progressbar > div div {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+  .info label {
+    letter-spacing: 3.6px;
+  }
+}
+
+.info input::-webkit-input-placeholder {
+  color: rgba(var(--text-color), 0.5);
+}
+
+.info input::-moz-placeholder {
+  color: rgba(var(--text-color), 1);
+}
+
+.info input:-ms-input-placeholder {
+  color: rgba(var(--text-color), 0.5);
+}
+
+.info input::-ms-input-placeholder {
+  color: rgba(var(--text-color), 0.5);
+}
+
+.info input::placeholder {
+  color: rgba(var(--text-color), 0.5);
+  opacity: 1;
+}
+
+.info input:focus::-webkit-input-placeholder {
+  color: rgba(var(--text-color), 0.75);
+}
+
+.info input:focus::-moz-placeholder {
+  color: rgba(var(--text-color), 0.75);
+}
+
+.info input:focus:-ms-input-placeholder {
+  color: rgba(var(--text-color), 0.75);
+}
+
+.info input:focus::-ms-input-placeholder {
+  color: rgba(var(--text-color), 0.75);
+}
+
+.info input:focus::placeholder {
+  color: rgba(var(--text-color), 0.75);
+}
+
+.info input:focus {
+  outline: 0;
+  border-color: rgba(var(--text-color), 0.75);
+  color: rgba(var(--text-color), 0.75);
+}
+
+.info input:disabled,
+.info input[readonly] {
+  border-color: transparent;
+  cursor: unset;
+}
+
+.info .new_border {
+  border-bottom-color: rgba(var(--text-color), 0.75);
+}
+
+.changetheme {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.container {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  width: 100%;
+}
+
+.blur {
+  height: 100%;
+  width: 100%;
+
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgba(var(--bg-color-rgb), 1)),
+    color-stop(20%, rgba(var(--bg-color-rgb), 1)),
+    to(rgba(var(--bg-color-rgb), 0.3))
+  );
+
+  background: -o-linear-gradient(
+    left,
+    rgba(var(--bg-color-rgb), 1) 0%,
+    rgba(var(--bg-color-rgb), 1) 20%,
+    rgba(var(--bg-color-rgb), 0.3) 100%
+  );
+
+  background: linear-gradient(
+    90deg,
+    rgba(var(--bg-color-rgb), 1) 0%,
+    rgba(var(--bg-color-rgb), 1) 20%,
+    rgba(var(--bg-color-rgb), 0.3) 100%
+  );
+  position: absolute;
+  top: 0;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 9;
+}
+
+.animal {
+  height: var(--image-height);
+  margin-right: 3.8rem;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+  background-color: inherit;
+  border: none;
+  padding: 20px;
+}
+
+.settings {
+  width: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  left: calc(var(--info) * 1.5);
+  z-index: 11;
+  top: calc(var(--info) * 1.3 + 0.25rem);
+}
+
+.compress-expand {
+  height: 1.1rem;
+  cursor: pointer;
+  position: absolute;
+  right: calc(var(--info) * 1.5);
+  z-index: 8;
+  top: calc(var(--info) * 1.3 + 0.25rem);
+}
+
+app-settings {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  height: 100%;
+
+  overflow-y: scroll;
+  left: 0px;
+}
+
+app-settings::-webkit-scrollbar {
+  display: none;
+}
+
+@font-face {
+  font-family: "AvenirNextCyr";
+  src: url(../assets/fonts/AvenirNextCyr-Regular.woff2) format("woff2"),
+    url(../assets/fonts/AvenirNextCyr-Regular.woff) format("woff"),
+    url(../assets/fonts/AvenirNextCyr-Regular.ttf) format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AvenirNextCyr";
+  src: url(../assets/fonts/AvenirNextCyr-Light.woff2) format("woff2"),
+    url(../assets/fonts/AvenirNextCyr-Light.woff) format("woff"),
+    url(../assets/fonts/AvenirNextCyr-Light.ttf) format("ttf");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AvenirNextCyr";
+  src: url(../assets/fonts/AvenirNextCyr-Demi.woff2) format("woff2"),
+    url(../assets/fonts/AvenirNextCyr-Demi.woff) format("woff"),
+    url(../assets/fonts/AvenirNextCyr-Demi.ttf) format("ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AvenirNextCyr";
+  src: url(../assets/fonts/AvenirNextCyr-Bold.woff2) format("woff2"),
+    url(../assets/fonts/AvenirNextCyr-Bold.woff) format("woff"),
+    url(../assets/fonts/AvenirNextCyr-Bold.ttf) format("ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AvenirNextCyr";
+  src: url(../assets/fonts/AvenirNextCyr-Medium.woff2) format("woff2"),
+    url(../assets/fonts/AvenirNextCyr-Medium.woff) format("woff"),
+    url(../assets/fonts/AvenirNextCyr-Medium.ttf) format("ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+.contwrap {
+  margin-left: -20px;
+  width: 12.9rem;
+  overflow-x: visible;
+}
+
+@media (max-width: 1160px) {
+  .info input {
+    margin: 0 auto;
+    width: 14.5rem;
+  }
+  .info label {
+    letter-spacing: 1px;
+  }
+  body {
+    --h1: 2.5rem;
+    --info: 1.2rem;
+    --time: 1.83rem;
+    --settings-h1: 1.85rem;
+    --themes: 1.2rem;
+    --settings-h2: 1.3rem;
+    --settings-p: 0.8rem;
+    height: 100%;
+  }
+
+  .nomobile {
+    display: none;
+  }
+
+  .contwrap {
+    margin: 0;
+  }
+
+  h1 {
+    padding: 0 !important;
+    text-align: center;
+  }
+
+  form {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  input {
+    text-align: center;
+    width: 100%;
+  }
+
+  .settings {
+    height: 1.4rem;
+    position: absolute;
+  }
+  .compress-expand {
+    height: 1.4rem;
+    position: absolute;
+    display: inline;
+  }
+}
+
+@media (max-width: 1160px) {
+  .info input {
+    width: 13rem !important;
+  }
+
+  app-settings {
+    width: -webkit-fit-content;
+
+    width: -moz-fit-content;
+
+    width: fit-content;
+  }
+  h1 {
+    letter-spacing: 0.02em;
+  }
+  .contwrap {
+    overflow-x: visible;
+    width: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .info label {
+    letter-spacing: 0.6px;
+    font-size: 0.9rem;
+  }
+
+  .gradient {
+    border: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings {
+    width: 2.1rem;
+    height: 1.8rem;
+  }
+  .compress-expand {
+    height: 1.8rem;
+    width: 1.8rem;
+  }
+
+  body {
+    --settings-h1: 2.4rem;
+    --settings-h2: 1.8rem;
+    --settings-p: 1.3rem;
+  }
+
+  app-settings {
+    opacity: 1;
+    font-size: 1.5rem !important;
+    width: 100%;
+  }
+}
+
+@media all and (orientation: landscape) and (max-width: 1160px) {
+  body {
+    --circle: 11rem;
+    --time: 1.7rem;
+    --border: 0.6rem;
+    --spanchik: 1.1rem;
+    --h1: 2rem;
+  }
+  .info input {
+    width: 13rem !important;
+  }
+}
+@media (min-aspect-ratio: 9/7) and (max-width: 1160px) {
+  .info input {
+    width: 13rem !important;
+  }
+
+  body {
+    --info: 1.1rem;
+    --h1: 1.8rem;
+
+    --time: 1.3rem;
+
+    --circle: 9rem;
+    --spanchik: 1rem;
+    --top: calc(-1 * var(--spanchik) / 2 - var(--border) / 2);
+    --border: 0.5rem;
+  }
+  .info {
+    margin-bottom: calc(var(--info) * 1);
+  }
+}
+
+@media (min-aspect-ratio: 13/7) and (max-width: 1160px) {
+  form {
+    opacity: 0;
+    height: 0;
+  }
+
+  body {
+    --info: 1.1rem;
+    --h1: 1.7rem;
+
+    --time: 1.2rem;
+
+    --circle: 9rem;
+    --spanchik: 1rem;
+    --top: calc(-1 * var(--spanchik) / 2 - var(--border) / 2);
+    --border: 0.5rem;
+  }
+
+  .contwrap {
+    margin-top: 2rem;
+    vertical-align: middle;
+  }
+}

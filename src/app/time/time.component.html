@@ -1,0 +1,362 @@
+<div class="fastpanel" *ngIf="input && fastpanel" id="fastpanel1">
+
+  <div
+  *ngFor="let num of [15, 30, 100, 500, 1000, 1500]; let m = index"
+  (click)="addTime(num)"
+>+{{ m <= 1 ? num : num / 100
+  }}<span [class]="'lng-' + (m <= 1 ? 's' : 'm')">{{
+    m <= 2 ? "s" : "m"
+  }}</span>
+</div>
+
+<div id="close" (click)="showfastpanel()">×</div>
+</div>
+
+<div (click)="showfastpanel()" *ngIf="!fastpanel && input" class="addpanel">
+  <span class="lng-quicktime" *ngIf="screenWidth > 1160"></span
+  ><span *ngIf="screenWidth <= 1160">+</span>
+</div>
+
+<div class="time nomobile" [ngClass]="{ move: props[2] }">
+  <input
+    id="inp"
+    [disabled]="props[0]"
+    size="6"
+    maxlength="6"
+    [readonly]="!input"
+    spellcheck="false"
+    autocomplete="off"
+    [(ngModel)]="inputnum"
+    name="first"
+    (keypress)="numberOnly($event)"
+    (keyup)="typeTime()"
+    maxlength="6"
+    type="tel"
+    pattern="[0-9]{6}"
+  />
+  <div
+    class="hurrah lng-timesup"
+    *ngIf="props[2]"
+    style="white-space: nowrap"
+  ></div>
+  <ng-container *ngFor="let _ of [].constructor(6); let i = index">
+    <span [ngStyle]="{ opacity: fake ? 0 : '100%' }">
+      <span
+        [ngStyle]="{
+          opacity: (time[i] == '' || time[i] == '.') && props[0] ? '0' : '100%'
+        }"
+        [ngClass]="{ inner: time[i] == '' || time[i] == '.', lol: props[1] }"
+        >{{ time[i] == "" || time[i] == "." ? "0" : time[i] }}</span
+      >
+
+      <span
+        class="values"
+        [class]="'lng-' + values[i]"
+        [ngStyle]="{
+          opacity: (time[i] == '' || time[i] == '.') && props[0] ? '0' : '100%'
+        }"
+        *ngIf="i % 2 != 0"
+        [ngClass]="{
+          inner:
+            (i % 2 == 0 ? time[i + 1] : time[i]) == '' || i % 2 == 0
+              ? time[i + 1]
+              : time[i] == '.',
+          lol: props[1]
+        }"
+      ></span>
+    </span>
+  </ng-container>
+</div>
+
+<div class="fastpanel" id="fastpanel3" *ngIf="input && fastpanel">
+
+  <div
+  *ngFor="let num of [2000, 3000, 4500, 10000, 20000]; let m = index"
+  (click)="changetime(num)"
+>
+  {{ m <= 2 ? num/100 : num / 10000
+  }}<span [class]="'lng-' + (m <= 2 ? 'm' : 'h')">{{
+    m <= 2 ? "m" : "h"
+  }}</span>
+</div>
+
+  <div id="close" (click)="showfastpanel()">×</div>
+</div>
+
+<div class="fastpanel" id="fastpanel2" *ngIf="input && fastpanel">
+  <div
+    *ngFor="let num of [0, 15, 30, 100, 500, 1000, 1500, 3000]; let m = index"
+    (click)="changetime(num)"
+    [style]="{
+      display:
+        m == 0
+          ? screenWidth > 1160
+            ? 'block'
+            : 'none'
+          : m == 2
+          ? screenWidth < 1160
+            ? 'block'
+            : 'none'
+          : m == 7
+          ? screenWidth > 1160
+            ? 'block'
+            : 'none'
+          : 'block'
+    }"
+  >
+    {{ m <= 2 ? num : num / 100
+    }}<span [class]="'lng-' + (m <= 2 ? 's' : 'm')">{{
+      m <= 2 ? "s" : "m"
+    }}</span>
+  </div>
+</div>
+
+<div class="progressbar nomobile" [ngClass]="{ visible: input }">
+  <div
+    [ngClass]="{ animate: props[3] }"
+    [ngStyle]="{
+      width: fake ? '100%' : '0',
+
+      'animation-delay': delay + 's',
+      'animation-duration': !props[3] ? '0s' : animateSec + 's',
+      'animation-play-state': !props[6] ? 'paused' : 'running'
+    }"
+  >
+    <div></div>
+  </div>
+</div>
+<div *ngIf="alert" class="notification" [@inOutAnimation]>
+  <div class="head">
+    <div class="lbl lng-warning"></div>
+    <div class="closenotify" (click)="alert = false">✕</div>
+  </div>
+  <hr />
+  <div class="lng-enteredinvalid"></div>
+  <div class="also lng-valuecannot"></div>
+  <button
+    class="lng-okey"
+    style="display: block"
+    (click)="alert = false"
+  ></button>
+</div>
+
+<div class="landscape">
+  <div class="mobile circ" *ngIf="!input">
+    <div class="circle">
+      <div class="circle circle3" *ngIf="false">
+        <div class="circle__inner circle__inner--left">
+          <div
+            class="circle__rotate circle__rotate--left"
+            [ngClass]="{ rotateleft: props[3] }"
+            [ngStyle]="{
+              'animation-duration': !props[3] ? '0s' : animateSec / 2 + 's',
+              'animation-play-state': !props[6] ? 'paused' : 'running',
+              'animation-delay': animateSec / 2 + delay + 's'
+            }"
+          ></div>
+        </div>
+        <div class="circle__inner circle__inner--right">
+          <div
+            class="circle__rotate circle__rotate--right"
+            [ngClass]="{ rotateright: props[3] }"
+            [ngStyle]="{
+              'animation-duration': !props[3] ? '0s' : animateSec / 2 + 's',
+              'animation-play-state': !props[6] ? 'paused' : 'running',
+              'animation-delay': delay + 's'
+            }"
+          ></div>
+        </div>
+        <div class="circle__content"></div>
+      </div>
+
+      <div id="box__click" style="margin: 0 auto; position: relative">
+        <div class="circletext">
+          <span
+            style="text-align: center; width: 100%"
+            *ngIf="props[7]"
+            class="move2 lng-timesupmob"
+          ></span>
+
+          <div *ngIf="!props[7]">
+            <ng-container *ngFor="let _ of [].constructor(6); let i = index">
+              <span>
+                <span>{{
+                  time[i] == "" || time[i] == "." ? "0" : time[i]
+                }}</span>
+              </span>
+              <span class="values" *ngIf="i % 2 != 0 && i < 4">:</span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="box__circle">
+          <div class="box__click">
+            <div
+              class="div__one__click wrapper__click"
+              data-anim="base wrapper"
+              [ngClass]="{
+                div__one__click__active: props[3],
+                wrapper__click__active: props[3]
+              }"
+              [ngStyle]="{
+                'animation-delay': !props[3]
+                  ? '0s'
+                  : animateSec / 2 + delay + 's',
+                'animation-play-state': !props[6] ? 'paused' : 'running'
+              }"
+            >
+              <div
+                class="div__two__click circle__one__click"
+                data-anim="base left"
+                [ngClass]="{
+                  div__two__click__active: props[3],
+                  circle__one__click__active: props[3]
+                }"
+                [ngStyle]="{
+                  'animation-duration': !props[3] ? '0s' : animateSec + 's',
+                  'animation-play-state': !props[6] ? 'paused' : 'running',
+                  'animation-delay': delay + 's'
+                }"
+              ></div>
+              <div
+                class="div__three__click circle__two__click"
+                data-anim="base right"
+                [ngClass]="{
+                  div__three__click__active: props[3],
+                  circle__two__click__active: props[3]
+                }"
+                [ngStyle]="{
+                  'animation-duration': !props[3] ? '0s' : animateSec / 2 + 's',
+                  'animation-play-state': !props[6] ? 'paused' : 'running',
+                  'animation-delay': delay + 's'
+                }"
+              ></div>
+            </div>
+            <div class="box__s_circle">
+              <span
+                class="s_circle__click"
+                [ngClass]="{ s_circle__active: props[3] }"
+                [ngStyle]="{
+                  'animation-duration': !props[3] ? '0s' : animateSec + 's',
+                  'animation-play-state': !props[6] ? 'paused' : 'running',
+                  'animation-delay': delay + 's'
+                }"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timechoose mobile" *ngIf="input" #cont>
+    <ng-container *ngFor="let column of [0, 1, 2]; let c = index">
+      <div
+        [class]="
+          'label lng-' +
+          (c == 0 ? 'hours' : c == 1 ? 'minutes' : 'seconds') +
+          'mobile'
+        "
+      ></div>
+
+      <ul (scroll)="scroll(c)" [id]="'ul' + (c + 1)">
+        <button class="void" *ngFor="let btn of [0, 1]">ㅤ</button>
+
+        <button
+          [ngClass]="{
+            current: ifclass[c][w],
+            around: ifclass[c][w + 1] || ifclass[c][w - 1],
+            edge: ifclass[c][w + 2] || ifclass[c][w - 2]
+          }"
+          *ngFor="let _ of [].constructor(c == 0 ? 24 : 60); let w = index"
+        >
+          {{ w < 10 ? "0" + w : w }}
+        </button>
+
+        <button class="void" *ngFor="let btn of [0, 1]">ㅤ</button>
+      </ul>
+
+      <div class="point" *ngIf="c != 2">:</div>
+    </ng-container>
+  </div>
+  <div class="player">
+    <ng-container *ngFor="let button of buttons; let i = index">
+      <button
+        (click)="buttons[i] == 'stop' ? stop() : reset()"
+        [disabled]="!props[1]"
+        class="stop"
+      >
+        <img
+          [src]="
+            'assets/pictures/icons/' + theme + '_theme/' + buttons[i] + '.png'
+          "
+        />
+      </button>
+      <div [ngStyle]="{ cursor: props[2] ? 'not-allowed' : 'pointer' }">
+        <div
+          class="playpause"
+          *ngIf="i == 0"
+          (click)="play(); $event.preventDefault()"
+          [style]="{
+            opacity: props[2] ? '75%' : '100%',
+            'pointer-events': props[7] ? 'none' : 'auto'
+          }"
+        >
+          <input
+            type="checkbox"
+            id="playpause"
+            checked="false"
+            [disabled]="props[7]"
+          />
+          <label
+            for="playpause"
+            [style]="{ cursor: props[2] ? 'not-allowed' : 'pointer' }"
+            ><img
+              [src]="
+                'assets/pictures/icons/' +
+                theme +
+                '_theme/' +
+                (props[4] ? 'play' : 'pause') +
+                '.png'
+              "
+              alt="Иконка"
+            />
+          </label>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div *ngIf="notify && props[7]" class="notification" [@inOutAnimation]>
+  <div class="head">
+    <div class="lbl lng-notify"></div>
+    <div class="closenotify" (click)="this.notify = false">✕</div>
+  </div>
+  <hr />
+  <div class="lng-timeexpired"></div>
+  <div class="also lng-changeduration"></div>
+  <button class="lng-turnoff" style="display: block" (click)="close()"></button>
+</div>
+
+<div *ngIf="timemore && props[7]" class="notification" [@inOutAnimation]>
+  <div class="head">
+    <div class="lbl lng-notify2"></div>
+    <div class="closenotify" (click)="this.timemore = false">✕</div>
+  </div>
+  <hr />
+  <div>
+    <span class="lng-unfortunately"></span>
+    <span *ngIf="hoursago > 0">{{ hoursago }} </span>
+    <span *ngIf="hoursago > 0" class="lng-hoursago"> </span>
+    <span *ngIf="minutesago > 0"> {{ minutesago }} </span>
+    <span *ngIf="minutesago > 0" class="lng-minutesago"></span
+    ><span> {{ secondsago }}</span>
+    <span class="lng-secondsago"></span>
+  </div>
+  <div class="also lng-changeduration2"></div>
+  <button
+    class="lng-turnoff2"
+    style="display: block"
+    (click)="closetimemore()"
+  ></button>
+</div>
