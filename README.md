@@ -11,7 +11,7 @@
   </a>
 
   <h3 align="center">Your Timer</h3>
-  <p align="center">March 2023</p>
+  <p align="center">Март 2023</p>
 
   <p align="center">
     Кастомизируемый таймер
