@@ -14,7 +14,7 @@
   <p align="center">March 2023</p>
 
   <p align="center">
-    Таймер
+    Кастомизируемый таймер
     <br />
     <a href="https://your-timer.vercel.app/">Проект в Vercel</a>
     ·
@@ -57,7 +57,7 @@
 <br>
 <div align="center">
 
-<img src="src/assets/images/animals/parrot.png" alt="parrot"  height="350">
+<img src="src/assets/pictures/animals/parrot.png" alt="parrot"  height="350">
 </div>
 <p align="right">(<a href="#readme-top">наверх</a>)</p>
 
