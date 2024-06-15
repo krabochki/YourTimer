@@ -392,6 +392,19 @@ export class AppComponent implements OnInit, AfterViewInit {
       ru: 'с',
       en: 's',
     },
+    repo: {
+      ru: 'Репозиторий: ',
+      en: 'Repository: ',
+    },
+    author: {
+      ru: 'Разработчица: ',
+      en: 'Developer: ',
+    },
+    authorname: {
+      ru: 'Полина Кузьменок',
+      en: 'Polina Kuzmenok',
+    },
+    
     language: {
       ru: 'Язык',
       en: 'Language',
@@ -399,6 +412,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     sound: {
       ru: 'Звук',
       en: 'Sound',
+    },
+    about: {
+      ru: 'О проекте',
+      en: 'About',
     },
     Theme: {
       ru: 'Темы',
@@ -439,9 +456,14 @@ export class AppComponent implements OnInit, AfterViewInit {
       en: 'Choose timer language',
     },
 
+    Learnmoreabouttheauthorandtheproject: {
+      ru: 'Узнайте больше о проекте и его разработчице',
+      en: 'Learn more about the project and the author',
+    },
+
     taskforthetimer: {
-      ru: 'ВВЕДИ ЗАДАЧУ ДЛЯ ТАЙМЕРА',
-      en: 'ENTER A TASK FOR THE TIMER',
+      ru: 'Введи задачу для таймера',
+      en: 'Enter a task for the timer',
     },
 
     currenttask: {

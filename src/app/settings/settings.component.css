@@ -49,10 +49,14 @@ section>div:nth-child(2)>div:first-child
       rgba(255, 255, 255, 0) 100%);
 }
 
+a{
+  font-weight: 500;
+  color: var(--text-color);
+}
+
 h2 {
   font-size: var(--settings-h2);
   font-weight: 600;
-  text-transform: capitalize;
   padding-left: 10px;
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -175,6 +179,17 @@ display: flex;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+}
+
+.ringtonesInput .ringtone-name{
+  transition: 0.2s;
+}
+.ringtonesInput .ringtone-name:hover{
+  letter-spacing: 1px;
+}
+
+.playpause, .playpause *{
+  cursor: pointer;
 }
 
 .opennext div:nth-child(2) {

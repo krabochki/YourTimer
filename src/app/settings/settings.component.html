@@ -1,8 +1,9 @@
 <div class="img_wrap" (scroll)="scrolling()">
     <div class="bigc">
         <h1 class="lng-settings"></h1>
-        <section *ngFor="let settingsOpt of settingsOptions; let thisSettingsOpt = index"   >
-            <div (click)="openSection(thisSettingsOpt)" [ngStyle]="{'pointer-events':dsl[thisSettingsOpt]?'none':'auto'}">
+        <section *ngFor="let settingsOpt of settingsOptions; let thisSettingsOpt = index">
+            <div (click)="openSection(thisSettingsOpt)"
+                [ngStyle]="{'pointer-events':dsl[thisSettingsOpt]?'none':'auto'}">
                 <!-- title of settings option -->
                 <img [src]="
             'assets/pictures/icons/' +
@@ -11,7 +12,7 @@
             (isItOpen[thisSettingsOpt] ? 'active_' : 'unactive_') +
             settingsOpt[0].toLowerCase() +
             '.png'
-          "  />
+          " />
                 <h2 [ngClass]="{ active: isItOpen[thisSettingsOpt] }" [class]="'lng-'+settingsOpt[0]">ㅤ</h2>
             </div>
             <div *ngIf="isItOpen[thisSettingsOpt]" [@inOutAnimation]>
@@ -19,20 +20,21 @@
                 <div></div>
                 <!-- line -->
                 <p [class]="'lng-'+settingsOpt[1].replaceAll(' ','')">ㅤ</p>
-                <div *ngIf="thisSettingsOpt === 0" >
-                    <div *ngFor="let language of languages; let thisLanguage = index" class="languageInputs"
-                    >
-                        <input  (change)="changeLanguage(language[1]); $event.preventDefault()" type="radio" name="languages" [id]="'language' + thisLanguage" [checked]="this._language==language[1]" />
+                <div *ngIf="thisSettingsOpt === 0">
+                    <div *ngFor="let language of languages; let thisLanguage = index" class="languageInputs">
+                        <input (change)="changeLanguage(language[1]); $event.preventDefault()" type="radio"
+                            name="languages" [id]="'language' + thisLanguage" [checked]="this._language==language[1]" />
                         <label [for]="'language' + thisLanguage">
                             <div>{{ language[0] }}</div>
-                            <div class="optinfo"  [class]="language[1] == 'Russian' ? 'lng-Russian': 'lng-English'" >ㅤ</div>
+                            <div class="optinfo" [class]="language[1] == 'Russian' ? 'lng-Russian': 'lng-English'">ㅤ
+                            </div>
                         </label>
                     </div>
                 </div>
                 <div *ngIf="thisSettingsOpt === 1">
                     <div style="display: flex" class="soundopt"
                         *ngFor="let _ of [].constructor(2); let thisSoundNum = index">
-                        <h3 [class]="thisSoundNum == 0 ? 'lng-Vibration': 'lng-Melody'" >ㅤ</h3>
+                        <h3 [class]="thisSoundNum == 0 ? 'lng-Vibration': 'lng-Melody'">ㅤ</h3>
                         <form class="toggle-switch2">
                             <label>
                                 <input type="checkbox" [checked]="
@@ -53,13 +55,13 @@
                         <label for="cowbell2" [class]="'lng-Volume'">ㅤ</label>
                         <div class="val">{{volume + '%'}}</div>
 
-                        <input  [ngStyle]="{ 'backgroundSize': ((_volume - 10) * 100 / (100 - 10) + '% 100%')}"
+                        <input [ngStyle]="{ 'backgroundSize': ((_volume - 10) * 100 / (100 - 10) + '% 100%')}"
                             type="range" id="cowbell2" name="cowbell2" min="10" max="100" [value]="_volume" step="10"
                             (input)="changeVolume($event)">
                     </div>
                     <div class="range">
                         <label for="cowbell" [class]="'lng-Duration'">ㅤ</label>
-                        <div class="val" >{{val}}</div>
+                        <div class="val">{{val}}</div>
 
                         <input [ngStyle]="{ 'backgroundSize': ((_duration - 1) * 100 / (30 - 1) + '% 100%')}"
                             type="range" id="cowbell" name="cowbell" (input)="changeDuration($event)" min="1" max="30"
@@ -68,23 +70,24 @@
                     </div>
                     <div class="soundsall">
                         <div class="themes" style="display: flex; align-items: center">
-                            <h3 [ngStyle]="{ 'font-weight': isItOpen[3] ? '500' : '400' }" [class]="'lng-ringtones'">
-                                 
+                            <h3 [ngStyle]="{ 'font-weight': isItOpen[4] ? '500' : '400' }" [class]="'lng-ringtones'">
+
                             </h3>
-                            <div class="opennext" [ngStyle]="{'pointer-events':dslringtones?'none':'auto'}" (click)="openRingtones()">
+                            <div class="opennext" [ngStyle]="{'pointer-events':dslringtones?'none':'auto'}"
+                                (click)="openRingtones()">
                                 <div *ngFor="let _ of [].constructor(3)" [ngStyle]="{
-                    'background-color': isItOpen[3]
+                    'background-color': isItOpen[4]
                       ? 'rgb(var(--text-color))'
                       : 'transparent'
                   }"></div>
                             </div>
                         </div>
-                        <div *ngIf="isItOpen[3]" [@inOutAnimation]>
+                        <div *ngIf="isItOpen[4]" [@inOutAnimation]>
                             <div *ngFor="let ringtone of ringtones; let thisRingtone = index" class="ringtonesInput">
-                                <input  type="radio" name="sounds" [id]="'sound' + (thisRingtone + 1)"
+                                <input type="radio" name="sounds" [id]="'sound' + (thisRingtone + 1)"
                                     [checked]="ringtone[0] == this._song ? true : false"
                                     (change)="changeSong(ringtone[0])" />
-                                <label [for]="'sound' + (thisRingtone + 1)">
+                                <label class="ringtone-name" [for]="'sound' + (thisRingtone + 1)">
                                     <div [class]="'lng-'+ringtone[0]"></div>
                                 </label>
                                 <div>
@@ -110,9 +113,10 @@
                     </div>
 
                 </div>
+
                 <div *ngIf="thisSettingsOpt === 2">
                     <div style="display: flex">
-                        <h3 [class]="'lng-'+_theme+'mode'" >ㅤ</h3>
+                        <h3 [class]="'lng-'+_theme+'mode'">ㅤ</h3>
                         <form class="toggle-switch">
                             <label>
                                 <input type="checkbox" [checked]="this._theme === 'light' ? true : false"
@@ -120,26 +124,29 @@
                                 <span class="slider"></span>
                             </label>
                         </form>
-                        
+
                     </div>
-                
-                    <div class="themesall" >
+
+                    <div class="themesall">
                         <div class="themes" style="display: flex; align-items: center">
-                            <h3 [ngStyle]="{ 'font-weight': isItOpen[4] ? '500' : '400' }"  [class]="'lng-Colorpresets'">
+                            <h3 [ngStyle]="{ 'font-weight': isItOpen[5] ? '500' : '400' }" [class]="'lng-Colorpresets'">
                                 ㅤ
                             </h3>
-                            <div class="opennext" [ngStyle]="{'pointer-events':dslthemes?'none':'auto'}"  (click)="openThemes()">
+                            <div class="opennext" [ngStyle]="{'pointer-events':dslthemes?'none':'auto'}"
+                                (click)="openThemes()">
                                 <div *ngFor="let _ of [].constructor(3)" [ngStyle]="{
-                    'background-color': isItOpen[4]
+                    'background-color': isItOpen[5]
                       ? 'rgb(var(--text-color))'
                       : 'transparent'
                   }"></div>
                             </div>
                         </div>
-                        <div class="themescont" *ngIf="isItOpen[4]" [@inOutAnimation]>
-                            <div *ngFor="let _ of [].constructor(6); let j = index" class="themesrow" >
+                        <div class="themescont" *ngIf="isItOpen[5]" [@inOutAnimation]>
+                            <div *ngFor="let _ of [].constructor(6); let j = index" class="themesrow">
 
-                                <div (click)="presetslist[j][i][0] ? changePreset(presetslist[j][i][0]) : ''"  *ngFor="let __ of [].constructor(3); let i = index" [id]="(j + 1) * (i + 1)" class="themescell">
+                                <div (click)="presetslist[j][i][0] ? changePreset(presetslist[j][i][0]) : ''"
+                                    *ngFor="let __ of [].constructor(3); let i = index" [id]="(j + 1) * (i + 1)"
+                                    class="themescell">
                                     <div [ngStyle]="{
                                         'border-width':
                                           this._preset == presetslist[j][i][0] ? '2px' : '1px',
@@ -151,7 +158,8 @@
                                           this._preset == presetslist[j][i][0]
                                             ? 'calc(var(--themes)*0.8 - 2px)'
                                             : 'calc(var(--themes)*0.8)'
-                                      }" class="borderthemes"> <div [ngStyle]="{
+                                      }" class="borderthemes">
+                                        <div [ngStyle]="{
                                         background: presetslist[j][i][1] ?
                                           ('linear-gradient(to left, rgb(' +
                                           presetslist[j][i][1] +
@@ -176,7 +184,8 @@
                                           this._preset == presetslist[j][i][0]
                                             ? 'calc(var(--themes)*0.1 - 2px)'
                                             : 'calc(var(--themes)*0.1 - 1px)'
-                                      }" class="fillthemes"> </div> </div>
+                                      }" class="fillthemes"> </div>
+                                    </div>
                                     <p [ngStyle]="{
                                         'font-weight':
                                           this._preset == presetslist[j][i][0] ? '500' : '300'
@@ -185,11 +194,25 @@
 
                             </div>
 
-                       
+
                             <div style="font-size: var(--settings-p); margin-top:0.15rem;
-                            font-weight: 300; text-align:center; line-height: 1.2;"  class="lng-themesinfo">ㅤ</div>
-     </div>
-                       
+                            font-weight: 300; text-align:center; line-height: 1.2;" class="lng-themesinfo">ㅤ</div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div *ngIf="thisSettingsOpt===3">
+                    <div style="display: flex; flex-direction: column;">
+                        <p>
+                          <span class="lng-author" >  Author: </span> <a class="lng-authorname" href="https://github.com/krabochki">Polina Kuzmenok</a>
+
+                        </p>
+                        <p>
+                            <span class="lng-repo" >Repository:</span> <a class="lng-title" href="https://github.com/krabochki/YourTimer">Your Timer</a>
+
+                        </p>
+
                     </div>
                 </div>
             </div>

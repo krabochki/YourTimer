@@ -5,6 +5,13 @@
 * Browsers: last 4 version
 */
 
+@media (min-width: 1160px) {
+
+.mini{
+  font-size: 1.8em;
+}
+}
+
 html,
 body {
   height: 100vh;

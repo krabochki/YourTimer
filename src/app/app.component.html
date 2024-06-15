@@ -41,9 +41,9 @@
     >
     </app-settings>
 
-    <h1 class="lng-title" style="padding-right: 20px"></h1>
+    <h1 class="lng-title" style="padding-right: 20px" [ngClass]="{'mini': language !== 'English'}"></h1>
     <form class="info">
-      <label #mydiv for="name" [class]="timerOff ? 'lng-taskforthetimer' : 'lng-currenttask'">
+      <label #mydiv for="name"  [class]="timerOff ? 'lng-taskforthetimer' : 'lng-currenttask'">
         
       </label>
       <input

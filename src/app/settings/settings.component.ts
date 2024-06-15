@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { AppComponent } from '../app.component';
@@ -7,8 +7,9 @@ const settingsOptions: string[][] = [
   ['Language', 'Choose timer language'],
   ['Sound', 'Tune timer sound'],
   ['Theme', 'Create own design'],
+  ['About', 'Learn more about the author and the project'],
 ];
-const isItOpen: boolean[] = [false, false, false];
+const isItOpen: boolean[] = [false, false, false, false,false,false];
 
 @Component({
   selector: 'app-settings',
@@ -35,7 +36,7 @@ const isItOpen: boolean[] = [false, false, false];
 })
 
 export class SettingsComponent implements OnInit, OnDestroy {
-  constructor(public appcomponent: AppComponent) { }
+  constructor(public appcomponent: AppComponent, private cd:ChangeDetectorRef) { }
   ngOnDestroy(): void {
     if (!this.audio.paused) {
       for (let i = 0; i <= this.ringtones.length - 1; i++) {
@@ -89,8 +90,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.isItOpen[0] = localStorage.getItem('Language') === 'true';
     this.isItOpen[1] = localStorage.getItem('Sound') === 'true';
     this.isItOpen[2] = localStorage.getItem('Theme') === 'true';
-    this.isItOpen[3] = localStorage.getItem('Ringtones') === 'true';
-    this.isItOpen[4] = localStorage.getItem('Themes') === 'true';
+    this.isItOpen[3] = localStorage.getItem('About') === 'true';
+    this.isItOpen[4] = localStorage.getItem('Ringtones') === 'true';
+    this.isItOpen[5] = localStorage.getItem('Themes') === 'true';
+
     this.dsl[0] = false;
     this.dsl[1] = false;
     this.dsl[2] = false;
@@ -160,8 +163,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
     }, 0);
   }
   protected openRingtones() {
-    isItOpen[3] = !isItOpen[3];
-    localStorage.setItem('Ringtones', String(isItOpen[3]));
+    isItOpen[4] = !isItOpen[4];
+    localStorage.setItem('Ringtones', String(isItOpen[4]));
     this.dslringtones = true;
 
     setTimeout(() => {
@@ -172,8 +175,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
     }, 0);
   }
   protected openThemes() {
-    isItOpen[4] = !isItOpen[4];
-    localStorage.setItem('Themes', String(isItOpen[4]));
+    isItOpen[5] = !isItOpen[5];
+    localStorage.setItem('Themes', String(isItOpen[5]));
     this.dslthemes = true;
     setTimeout(() => {
       this.dslthemes = false;
@@ -240,6 +243,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
       this.songstate = true;
       this.song = changeSong;
     }
+    this.cd.markForCheck();
   }
   protected volumechanged(e: any) {
     this.newVolume.emit(e.target.value);
@@ -265,6 +269,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   val: string;
 
   protected playmusic(k: any) {
+    this.ringtones.forEach((ringtone)=>{ringtone[3]=false})
     for (let j = 0; j <= this.ringtones.length - 1; j++) {
       if (this.ringtones[j][2] == true)
         this.ringtones[j][2] = !this.ringtones[j][2];
@@ -285,11 +290,13 @@ export class SettingsComponent implements OnInit, OnDestroy {
     }
     setTimeout(() => {
       this.stop(k);
+      this.cd.markForCheck();
     }, Number(this.ringtones[k][1]) * 1000);
+    this.cd.markForCheck();
   }
 
   private stop(m: number) {
-    this.ringtones[m][2] = !this.ringtones[m][2];
+    this.ringtones[m][2] = false;
   }
 
   @Input()
